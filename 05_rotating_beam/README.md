@@ -32,7 +32,8 @@ One mass 1D oscillator scene:
     </Node>
 </Node>
 ```
-
+### Latex Test
+<img class="latex" src="https://latex.codecogs.com/png.latex?$$\frac{d\boldsymbol{I}}{dt}==$$" title="test law" />
 
 
 
