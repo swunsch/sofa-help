@@ -2,12 +2,12 @@
 In this example a one mass 1D oscillator is modeled.
 
 [<img
-  src="01_one_mass_1D_oscillator/mass_spring_system_sofa.png"
+  src="mass_spring_system_sofa.png"
   width="150"
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
 [<img
-  src="01_one_mass_1D_oscillator/mass_spring_system_sofa_mechanical.png"
+  src="mass_spring_system_sofa_mechanical.png"
   width="150"
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
