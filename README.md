@@ -2,6 +2,12 @@
 This repository exist for making data available for certain questions and tasks concerning the usage of [SOFA] (https://www.sofa-framework.org).
 
 [<img
+  src="01_one_mass_1D_oscillator/mass_spring_system_sofa.png"
+  width="200"
+  title="one_mass_1D_oscillator">
+](01_one_mass_1D_oscillator/)
+
+[<img
   src="05_rotating_beam/rot_beam_01.png"
   width="200"
   title="Rotation of a beam">
