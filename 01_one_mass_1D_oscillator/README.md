@@ -7,9 +7,9 @@ In this example a one mass 1D oscillator is modeled.
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
 [<img
-  src="mass_spring_system_sofa_mechanical.png"
+  src="mass_spring_system_sofa_mechancial.png"
   width="150"
-  title="one_mass_1D_oscillator">
+  title="one_mass_1D_oscillator_mechanical">
 ](01_one_mass_1D_oscillator/)
 
 ## System/Model Parameters
