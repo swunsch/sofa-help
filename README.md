@@ -6,7 +6,6 @@ This repository exist for making data available for certain questions and tasks 
   width="200"
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
-
 [<img
   src="05_rotating_beam/rot_beam_01.png"
   width="200"
