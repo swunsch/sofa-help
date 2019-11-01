@@ -5,8 +5,10 @@ In this example a one mass 1D oscillator is modeled.
 
 **Mass**
 - m = 
+
 **Spring Stiffness**
 - k =
+
 **Damping**
 - d =
 
