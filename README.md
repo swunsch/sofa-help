@@ -26,5 +26,6 @@ This repository exist for making data available for certain questions and tasks 
 | kgf-s²/mm | mm     | s    | kgf       | kgf/mm²    | kgf-mm      | 7.98e-10 | 2.11e+04 | 1.56e+04           | 9.806e+03 |
 | kg        | mm     | s    | mN        | 1.0e+03 Pa |             | 7.83e-06 | 2.07e+08 |                    | 9.806e+03 |
 | g         | cm     | ms   | 1.0e+1 N  | 1.0e+05 Pa |             | 7.83e+00 | 2.07e+06 |                    | 9.806e-04 |
+
 the table is from:
 (https://www.dynasupport.com/howtos/general/consistent-units)
