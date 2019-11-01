@@ -3,7 +3,7 @@ In this example a one mass 1D oscillator is modeled.
 
 [<img
   src="mass_spring_system_sofa.png"
-  width="220"
+  width="230"
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
 [<img
