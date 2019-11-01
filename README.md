@@ -3,12 +3,12 @@ This repository exist for making data available for certain questions and tasks 
 
 [<img
   src="01_one_mass_1D_oscillator/mass_spring_system_sofa.png"
-  width="200"
+  width="150"
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
 [<img
   src="05_rotating_beam/rot_beam_01.png"
-  width="200"
+  width="250"
   title="Rotation of a beam">
 ](05_rotating_beam/)
 
