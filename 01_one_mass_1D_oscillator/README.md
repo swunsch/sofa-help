@@ -15,16 +15,16 @@ In this example a one mass 1D oscillator is modeled.
 ## System/Model Parameters
 
 **Mass**
-- m = 
+- m = 1 *kg* = 1e-3 *t*
 
 **Spring Stiffness**
-- k =
+- k = 10 *N/m* = 10-e3 *N/mm*
 
 **Damping**
-- d =
+- d = 1 *N/m*
 
 **Gravity**
-- g =
+- g = 9.81 *m/s²*
 
 
 ## Sets of Consistent Units
