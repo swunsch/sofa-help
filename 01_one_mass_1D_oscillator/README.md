@@ -21,7 +21,7 @@ In this example a one mass 1D oscillator is modeled.
 - k = 10 *N/m* = 10-e3 *N/mm*
 
 **Damping**
-- d = 1 *Ns/m* = 1e-3*Ns/mmm*
+- d = 1 *Ns/m* = 1e-3*Ns/mm*
 
 **Gravity**
 - g = 9.81 *m/s²* = 9.81e3 *mm/s²*
