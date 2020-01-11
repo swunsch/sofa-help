@@ -8,12 +8,12 @@ One end of the structure is constrained to one reference node, which is given a 
 
 [<img
   src="rot_beam_01.png"
-  width="500"
+  width="560"
   title="3D solid ">
 ](05_rotating_beam/)
 [<img
   src="rot_beam_mpc_expl.png"
-  width="300"
+  width="290"
   title="one_mass_1D_oscillator_mechanical">
 ](05_rotating_beam/)
 
