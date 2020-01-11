@@ -1,46 +1,21 @@
-Big Topic
-=======================
+# rotating beam (3D FEM)
+In this example a rotating 3D continuum ("beam/rod") is modeled. 
+The structure is discretized by linear solid hexader finite elements.
 
-### TOC
-1. [ Topic 1. ](#t1)
-2. [ Topic 2. ](#t2)
-
+One end of the structure is constrained to one reference node, which is given a dynamic rotational boundary condition about an axis.
 
 
-what follows is subtopics
 
-<a name="t1"></a>
-### Topic 1
-what follows
-- **Number 1**
-  - subtopic 1.1.1
-- **Number 2**
+[<img
+  src="rot_beam_01.png"
+  width="430"
+  title="3D solid ">
+](05_rotating_beam/)
+[<img
+  src="rot_beam_mpc_expl.png"
+  width="250"
+  title="one_mass_1D_oscillator_mechanical">
+](05_rotating_beam/)
 
-<a name="t2"></a>
-### Topic 2
-what follows
-- **Number 1**
-- **Number 2**
-
-Example
--------
-
-One mass 1D oscillator scene:
-```xml
-<Node name="root" gravity="-9.81 0 0" dt="0.01">
-    <VisualStyle displayFlags="showBehavior" />
-    <EulerSolver name="Explicit Euler Solver" />
-    <Node name="FirstObject" gravity="0 -9.81 0">
-        <MechanicalObject template="Vec3d" name="Particles" restScale="1" position="0 0 0 1 0 0" />
-        <UniformMass template="Vec3d" name="Mass" />
-        <FixedConstraint template="Vec3d" name="Fix Particles" indices="0" />
-        <StiffSpringForceField template="Vec3d" name="Internal Spring" spring="0 1 10 0.0 1&#x0A;" />
-	<Monitor template="Vec3d" name="monitor" listening="1" indices="1" ExportPositions="true" ExportVelocities="true" ExportForces="true" />
-    </Node>
-</Node>
-```
-### Latex Test
-<img class="latex" src="https://latex.codecogs.com/png.latex?$$\frac{d\boldsymbol{I}}{dt}=\boldsymbol{0}$$" title="test law" />
-
-
+## System/Model Parameters
 
