@@ -13,7 +13,7 @@ One end of the structure is constrained to one reference node, which is given a 
 ](05_rotating_beam/)
 [<img
   src="rot_beam_mpc_expl.png"
-  width="290"
+  width="444"
   title="one_mass_1D_oscillator_mechanical">
 ](05_rotating_beam/)
 
