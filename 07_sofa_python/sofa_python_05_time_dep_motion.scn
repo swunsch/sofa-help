@@ -1,0 +1,30 @@
+<Node name="root" dt="0.05" gravity="0 0 0">
+    <!-- Constant force for a deformable -->
+    <RequiredPlugin pluginName='SofaOpenglVisual'/>
+    <RequiredPlugin pluginName='SofaPython'/>
+
+    <VisualStyle displayFlags="showBehaviorModels showForceFields" />
+    <PythonScriptController name="timeMove" filename="timeMovement.py" classname="timing" listening="1"/>
+
+    <MeshObjLoader name="VisualLoader" filename="mesh/liver-smooth.obj" />
+    <MeshGmshLoader name="MecaLoader" filename="mesh/liver.msh" />
+
+    <Node name="Liver" >
+        <EulerImplicitSolver name="cg_odesolver"   rayleighStiffness="0.1" rayleighMass="0.1" />
+        <CGLinearSolver name="linear solver" iterations="25" tolerance="1e-09" threshold="1e-09" />
+        <TetrahedronSetTopologyContainer name="topo" src="@../MecaLoader" />
+        <MechanicalObject name="dofs" src="@../MecaLoader" />
+        <TetrahedronSetGeometryAlgorithms template="Vec3d" name="GeomAlgo" />
+        <DiagonalMass  name="computed using mass density" massDensity="1" />
+        <TetrahedralCorotationalFEMForceField template="Vec3d" name="FEM" method="large" poissonRatio="0.3" youngModulus="3000" computeGlobalMatrix="0" />
+<!--         <FixedConstraint  name="FixedConstraint" indices="3 39 64" />
+ -->
+        <LinearMovementConstraint template="Vec3d" name="LMC"  indices="3 39 64"  movements=" 50 0 0" />
+
+<!--         <Node name="Visu" tags="Visual" gravity="0 -9.81 0">
+            <OglModel  name="VisualModel" src="@../../VisualLoader" />
+            <BarycentricMapping name="visual mapping" input="@../dofs" output="@VisualModel" />
+        </Node> -->
+
+    </Node>
+</Node>

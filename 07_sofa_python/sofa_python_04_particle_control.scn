@@ -1,0 +1,40 @@
+<Node name="root" dt="0.01" gravity="0 0 0">
+    <VisualStyle displayFlags="showForceFields showCollisionModels showBehaviorModels" />
+    <RequiredPlugin name="SofaPython" pluginName="SofaPython" />
+    <CollisionPipeline />
+    <BruteForceDetection />
+    <DefaultContactManager />
+    <MinProximityIntersection alarmDistance="0.4" contactDistance="0.2" />
+    <DefaultCollisionGroupManager />
+    <Node name="ParticleControl" >
+        <TransformEngine template="Rigid3d" name="engine" input_position="0 0 0  0 0 0 1" />
+        <EulerImplicitSolver name="EulerImplicit"  rayleighStiffness="0.1" rayleighMass="0.1" />
+        <CGLinearSolver name="CG Solver" iterations="25" tolerance="1e-5" threshold="1e-5"/>
+        <MechanicalObject template="Rigid3d" name="myRigidParticleForRotation" position="@engine.output_position" showObject="true" showObjectScale="0.1"/>
+        <Node name="Plane">
+            <EulerImplicitSolver name="EulerImplicit"  rayleighStiffness="0.1" rayleighMass="0.1" />
+            <CGLinearSolver name="CG Solver" iterations="25" tolerance="1e-5" threshold="1e-5"/>
+            <RegularGrid name="loader" nx="5" ny="5" nz="1" xmin="0" xmax="1" ymin="0" ymax="1" zmin="0" zmax="1" position="@mObject1.position" drawHexahedra="true"/>
+            <MechanicalObject template="Vec3d" name="mObject1" showObject="true" showObjectScale="3"/>
+            <UniformMass template="Vec3d" totalMass="1"/>
+            <MeshSpringForceField template="Vec3d" name="forcefield" linesStiffness="10" />
+            <BoxROI name="Box" box="-0.1 -0.1 0  1.1 1.1 0" drawBoxes="true"/>
+            <PairBoxROI name="PairBox" inclusiveBox="-0.1 -0.1 0  1.1 1.1 0" includedBox="0.4 0.4 0 0.6 0.6 0"/>
+            <SphereModel radius="0.1"/>
+            <RigidMapping input="@.." output="@." />
+            <!-- <AffineMovementConstraint name="bilinearConstraint" template="Vec3d" indices="@Box.indices" meshIndices = "@PairBox.indices" rotation="[07 -07 7,0.7 0.7 0,0 0 1]"  drawConstrainedPoints="1"/> -->
+        </Node>
+    </Node>
+    <Node name="CubeSphere">
+        <EulerImplicitSolver name="EulerImplicit"  rayleighStiffness="0.1" rayleighMass="0.1" />
+        <CGLinearSolver name="CG Solver" />
+        <MechanicalObject name="Particles" template="Vec3d" position="0 0 1  1 0 1  0 1 1  1 1 1  0 0 2  1 0 2  0 1 2  1 1 2" translation="-2 0 -1" />
+        <MeshTopology name="Topology" hexas="0 4 6 2 1 5 7 3" />
+        <UniformMass name="Mass" totalMass="1" />
+        <FixedConstraint fixAll="true"/>
+        <MeshSpringForceField name="Springs" stiffness="100" damping="1" />
+        <SphereModel name="Spheres Cube" radius="0.4" />
+    </Node>
+
+    <PythonScriptController name="angularVel" filename="angularVel.py" classname="rotate"/>
+</Node>
