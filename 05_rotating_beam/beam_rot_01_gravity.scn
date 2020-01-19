@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<Node name="lroot" gravity="0 -9.81e03 0" dt="1e-4">
+    <VisualStyle displayFlags="showBehavior showForce" />
+    <Node name="beam">
+        <EulerImplicitSolver name="cg_odesolver"   rayleighStiffness="1e-5" rayleighMass="0.0" />
+        <CGLinearSolver name="linear solver" iterations="25" tolerance="1e-09" threshold="1e-09" />
+        <MeshGmshLoader name="meshLoader" filename="beam_hexa_coarse_01_mod.msh" />
+        <HexahedronSetTopologyContainer name="topo" src="@meshLoader" />
+        <MechanicalObject name="dofs" src="@meshLoader" showObject="true" />
+        <HexahedronSetGeometryAlgorithms template="Vec3d" name="GeomAlgo" />
+        <DiagonalMass  name="computed using mass density" massDensity="7.85e-09" />
+        <HexahedronFEMForceField template="Vec3d" name="FEM" method="large" poissonRatio="0.3" youngModulus="2.1e5" />
+        <FixedConstraint  name="FixedConstraint" indices="9" />
+    </Node>
+</Node>

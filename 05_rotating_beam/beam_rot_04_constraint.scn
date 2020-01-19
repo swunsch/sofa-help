@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<Node name="lroot" gravity="0 0 0" dt="1e-2">
+    <VisualStyle displayFlags="showBehavior" />
+<!--     <Node name="RefPoint" >
+        <MechanicalObject template="Vec3d" name="Particles"  showObject="true" restScale="1" position="0 0 0" />
+        <FixedConstraint template="Vec3d" name="Fix Particles" indices="0" />
+    </Node> -->
+    <Node name="beam">
+        <EulerImplicitSolver name="cg_odesolver"   rayleighStiffness="0.5e-5" rayleighMass="0.0" />
+        <CGLinearSolver name="linear solver" iterations="25" tolerance="1e-09" threshold="1e-09" />
+        <MeshGmshLoader name="meshLoader" filename="beam_hexa_coarse_01_mod.msh" />
+        <HexahedronSetTopologyContainer name="topo" src="@meshLoader" />
+        <MechanicalObject name="dofs" src="@meshLoader" showObject="true" />
+        <HexahedronSetGeometryAlgorithms template="Vec3d" name="GeomAlgo" />
+        <DiagonalMass  name="computed using mass density" massDensity="7.85e-09" />
+        <HexahedronFEMForceField template="Vec3d" name="FEM" method="large" poissonRatio="0.3" youngModulus="2.1e5" />
+<!--         <FixedConstraint name="FixedConstraint" indices="9 2 3" /> -->
+        <LinearMovementConstraint template="Vec3d" name="LMC"  indices="0 1 2 3 8 9 156 157 158 159 164 165" 
+            keyTimes="0 1 10 11 100"  
+            movements=" 0 0 0
+                         0 0 0
+                          20 0 0
+                           20 0 0
+                            20 0 0
+                            " />
+    </Node>
+</Node>
