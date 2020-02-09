@@ -1,0 +1,38 @@
+Hello alltogether,
+
+I try to model a rotating structure (3D FEM "beam"). At one end its surface should be connected rigidly to a "Reference Particle" which is given a rotational boundary condition.
+
+Using stuff from this post.
+https://www.sofa-framework.org/community/forum/topic/rotating-an-object-with-a-angular-velocity-and-conserving-collisions/
+
+I build my scene
+
+see file: beam_rot_06_rigi_map_part_contrl_q_1_1.scn
+
+
+Problem 1: The Rigid mapping maps the to the whole beam, not just the particles from BoxROI but using
+
+<RigidMapping input="@.." output="@." />
+
+I think @. uses of the whole MechanicalObject beam so all the mechanicalDOFs of the beam. Okay.
+
+What I need is the Mapping to only some of the DOFs of the MechanicalObject beam. I can select the particles needed with 
+
+<BoxROI name="slaveParticles" box="0 -16 -11  0 16 11" drawBoxes="true"/>
+
+but in the 
+file: beam_rot_06_rigi_map_part_contrl_q_1_2.scn
+I cannot map to those points/particles/DOFs from BoxROI selection
+
+both
+<RigidMapping input="@.." output="@slaveParticles" />
+or 
+<RigidMapping input="@.." output="@slaveParticles.indices" />
+
+are not working.
+
+How is it possible to connect (rigid connection) only some points/particles/DOFs to the Rigid3d?
+
+
+
+
