@@ -7,7 +7,7 @@ This repository exist for making data available for certain questions and tasks 
   title="one_mass_1D_oscillator">
 ](01_one_mass_1D_oscillator/)
 [<img
-  src="05_rotating_beam/rot_beam_01.png"
+  src="05_rotating_beam/rot_beam_sofa_rigid3d.png"
   width="250"
   title="Rotation of a beam">
 ](05_rotating_beam/)
