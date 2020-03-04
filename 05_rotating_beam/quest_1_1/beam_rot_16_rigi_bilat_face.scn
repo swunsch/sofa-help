@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<Node name="lroot" gravity="0 -10 0" dt="1e-4">
+    <VisualStyle displayFlags="showForceFields showBehavior" />
+    <RequiredPlugin name="SofaPython" pluginName="SofaPython" />
+
+    <FreeMotionAnimationLoop />
+    <GenericConstraintSolver maxIterations="1000" tolerance="0.001"/>
+
+    <Node name="ParticleControl" >
+        <TransformEngine template="Rigid3d" name="engine" input_position="0 0 0  0 0 0 1" />
+        <EulerImplicitSolver name="EulerImplicit"  rayleighStiffness="0.1" rayleighMass="0.1" />
+        <CGLinearSolver name="CG Solver" iterations="25" tolerance="1e-5" threshold="1e-5"/>
+        <MechanicalObject template="Rigid3d" name="myRigidParticleForRotation" position="@engine.output_position" showObject="true" showObjectScale="5"/>
+        <UncoupledConstraintCorrection />
+
+        <Node name="Constraints">
+            <MechanicalObject name="points" template="Vec3d" position="0 15 10 0 15 -10 0 -15 -10 0 -15 10 0 -15 0 0 15 0 0 -5 10 0 5 10 0 -5 -10 0 5 -10 0 -5 0 0 5 0" showObject="true" showObjectScale="5"/>
+            <RigidMapping />
+        </Node>
+    </Node>
+    <Node name="beam">
+        <EulerImplicitSolver name="cg_odesolver"   rayleighStiffness="0.5e-5" rayleighMass="0.0" />
+        <CGLinearSolver name="linear solver" iterations="25" tolerance="1e-09" threshold="1e-09" />
+        <MeshGmshLoader name="meshLoader" filename="beam_hexa_coarse_01_mod.msh" />
+        <HexahedronSetTopologyContainer name="topo" src="@meshLoader" />
+        <MechanicalObject name="dofs" src="@meshLoader" showObject="true" />
+        <HexahedronSetGeometryAlgorithms template="Vec3d" name="GeomAlgo" />
+        <DiagonalMass  name="computed using mass density" massDensity="7.85e-09" />
+        <HexahedronFEMForceField template="Vec3d" name="FEM" method="large" poissonRatio="0.3" youngModulus="2.1e5" />
+        <UncoupledConstraintCorrection />
+
+    </Node>
+
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="0" second_point="2" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="1" second_point="3" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="2" second_point="1" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="3" second_point="0" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="4" second_point="8" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="5" second_point="9" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="6" second_point="156" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="7" second_point="157" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="8" second_point="158" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="9" second_point="159" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="10" second_point="164" />
+     <BilateralInteractionConstraint object1="@ParticleControl/Constraints/points" object2="@beam/dofs" first_point="11" second_point="165" />
+
+     <PythonScriptController name="angularVel" filename="angularVelBeamMed.py" classname="rotate"/>
+</Node>
