@@ -1,0 +1,27 @@
+import Sofa
+
+def createScene(rootNode):
+
+        rootNode.createObject('RequiredPlugin', name='SofaPython')
+        rootNode.createObject('VisualStyle', displayFlags='showCollisionModels hideMappings showForceFields')
+
+        SolverNode= rootNode.createChild('SolverNode')
+        SolverNode.createObject('EulerImplicit',verbose='false')
+        SolverNode.createObject('SparseLDLSolver', name="ldlsolveur")
+
+
+#####   Rigid Part of the BEAM (Top)
+        RigidNode= SolverNode.createChild('RigidNode')
+        # RigidNode.createObject('EulerImplicit',verbose='false')
+        # RigidNode.createObject('SparseLDLSolver', name="ldlsolveur")
+        # RigidNode.createObject('TransformEngine', template="Rigid3d", name="engine", input_position=[0, 0, 0,  0, 0, 0, 0])
+        RigidNode.createObject('TransformEngine', template="Rigid3d", name="engine", input_position=[0,0,2, 0,0,0, 0])
+        RigidNode.createObject("MechanicalObject",template="Rigid3d", name="rigid1", position="@engine.output_position",showObject=True, showObjectScale=0.5)
+        # RigidNode.createObject('FixedConstraint', template="Rigid3d", name="Fix", indices="0")
+        # RigidNode.createObject('FixedRotationConstraint', template="Rigid3d", name="default2", FixedYRotation="0", FixedZRotation="1")
+ 
+        rootNode.createObject('PythonScriptController', name="angularVel", filename="angularVelBeamMed_rigidify.py", classname="rotate")
+
+        return rootNode
+
+
